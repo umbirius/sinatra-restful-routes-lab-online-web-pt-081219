@@ -5,6 +5,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do 
+<<<<<<< HEAD
     erb :index
   end 
   
@@ -48,6 +49,27 @@ class ApplicationController < Sinatra::Base
     @recipe.destroy
     redirect '/recipes'
   end
+=======
+    erb :new
+  end 
+  
+  post '/recipes' do 
+    @recipe = Recipe.new(name: params["name"], ingredients: params["ingredients"], cook_time: params["cook_time"])
+    
+    if recipe.save 
+      redirect '/recipe/:id'
+    else 
+      redirect '/failure'
+    end 
+  end 
+  
+  get '/recipe/:id' do 
+  end 
+  
+  get '/failure' do
+		erb :failure
+	end
+>>>>>>> 8c57fc559391f3a1a042db1377c7e134fe7cc6a9
   
   
 end
